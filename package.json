@@ -1,0 +1,9 @@
+{
+  "name": "itg-react-scripts",
+  "version": "0.0.0",
+  "description": "The build tools behind my react apps",
+  "main": "index.js",
+  "repository": "https://github.com/itsthatguy/itg-react-scripts",
+  "author": "Kevin Altman <kevin@itsthatguy.com>",
+  "license": "MIT"
+}
