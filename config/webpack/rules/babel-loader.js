@@ -1,4 +1,5 @@
-import paths from '../paths';
+import path from 'path';
+import paths from '../../paths';
 
 module.exports = function ({uglify, additionalPlugins, babelPresetEnvTargets}) {
   return {

@@ -8,5 +8,5 @@ module.exports = [
   //   CONFIG: JSON.stringify(environmentConfig)
   // }),
   new webpack.optimize.OccurrenceOrderPlugin(),
-  new webpack.NoErrorsPlugin(),
+  new webpack.NoEmitOnErrorsPlugin(),
 ];

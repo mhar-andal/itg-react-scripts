@@ -1,15 +1,21 @@
-import webpack        from 'webpack';
-import paths          from './paths';
-import plugins          from './webpack/plugins';
+import webpack                       from 'webpack';
+import path                          from 'path';
+import WatchMissingNodeModulesPlugin from 'react-dev-utils/WatchMissingNodeModulesPlugin';
 
-import rules            from './webpack/rules';
-import babelLoaderRules from './webpack/rules/babel-loader';
+import paths                         from './paths';
+import plugins                       from './webpack/plugins';
+
+import rules                         from './webpack/rules';
+import babelLoaderRules              from './webpack/rules/babel-loader';
 
 const BABEL_LOADER_PLUGINS_DEV = [
   require.resolve('babel-plugin-transform-react-jsx-self'),
   require.resolve('babel-plugin-transform-react-jsx-source'),
   require.resolve('react-hot-loader/babel'),
 ];
+
+const publicPath = '/';
+const publicUrl = '';
 
 module.exports = {
   devtool: 'eval-source-map',
@@ -59,7 +65,7 @@ module.exports = {
       path.resolve(process.cwd(), paths.appRoot)
     ].concat(paths.nodePaths),
 
-    extensions: ['', '.js', '.jsx', '.json']
+    extensions: ['.js', '.jsx', '.json']
   },
 
   resolveLoader: {

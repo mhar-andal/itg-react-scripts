@@ -6,7 +6,7 @@
   "author": "Kevin Altman <kevin@itsthatguy.com>",
   "license": "MIT",
   "engines": {
-    "node": ">=4"
+    "node": ">=6"
   },
   "files": [
     "bin",
@@ -16,7 +16,14 @@
   "bin": {
     "itg-react-scripts": "./bin/itg-react-scripts.js"
   },
+  "scripts": {
+    "build": "babel --ignore=node_modules,bin,lib,index.js --out-dir=lib --copy-files .",
+    "watch": "babel --ignore=node_modules,bin,lib,index.js --out-dir=lib --copy-files --watch .",
+    "prepublish": "npm run build"
+  },
   "dependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
     "babel-plugin-dynamic-import-node": "^1.0.1",
     "babel-plugin-syntax-object-rest-spread": "^6.13.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
@@ -26,12 +33,15 @@
     "babel-plugin-transform-react-jsx-source": "^6.22.0",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.4.0",
+    "babel-preset-latest": "^6.24.1",
     "babel-preset-node6": "^11.0.0",
+    "babel-preset-react": "^6.24.1",
     "case-sensitive-paths-webpack-plugin": "^2.0.0",
     "cross-spawn": "^5.1.0",
     "detect-port": "^1.1.1",
     "dotenv": "^4.0.0",
     "react-dev-utils": "^0.5.2",
+    "react-hot-loader": "^3.0.0-beta.6",
     "webpack": "^2.4.1",
     "webpack-dev-server": "^2.4.3"
   }

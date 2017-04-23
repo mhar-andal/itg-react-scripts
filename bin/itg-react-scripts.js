@@ -8,7 +8,7 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
-import spawn from 'cross-spawn';
+var spawn = require('cross-spawn');
 
 var script = process.argv[2];
 var args = process.argv.slice(3);
@@ -19,7 +19,7 @@ switch (script) {
   case 'test':
     var result = spawn.sync(
       'node',
-      [require.resolve('../scripts/' + script)].concat(args),
+      [require.resolve('../lib/scripts/' + script)].concat(args),
       { stdio: 'inherit' }
     );
     if (result.signal) {
