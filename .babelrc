@@ -4,7 +4,6 @@
       "babel-preset-env",
       {
         "targets": {
-          "ie": 9,
           "node": "current"
         },
         "debug": true,
