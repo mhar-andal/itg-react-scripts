@@ -7,7 +7,6 @@ module.exports = [
   // new webpack.DefinePlugin({
   //   CONFIG: JSON.stringify(environmentConfig)
   // }),
-  new webpack.HotModuleReplacementPlugin(),
   new webpack.optimize.OccurrenceOrderPlugin(),
   new webpack.NoEmitOnErrorsPlugin(),
 ];

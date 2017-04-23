@@ -1,7 +1,10 @@
 const webpack                       = require('webpack');
 const union                         = require('lodash').union;
 const path                          = require('path');
+
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
+const HtmlWebpackPlugin             = require('html-webpack-plugin');
+const InterpolateHtmlPlugin         = require('react-dev-utils/InterpolateHtmlPlugin');
 
 const paths                         = require('./paths');
 const plugins                       = require('./webpack/plugins');
@@ -9,14 +12,17 @@ const plugins                       = require('./webpack/plugins');
 const rules                         = require('./webpack/rules');
 const babelLoaderRules              = require('./webpack/rules/babel-loader');
 
+const getClientEnvironment          = require('./env');
+
 const BABEL_LOADER_PLUGINS_DEV = [
   require.resolve('babel-plugin-transform-react-jsx-self'),
   require.resolve('babel-plugin-transform-react-jsx-source'),
   require.resolve('react-hot-loader/babel'),
 ];
 
-const publicPath = '/';
+const publicPath = paths.publicPath;
 const publicUrl = '';
+const env = getClientEnvironment(publicUrl);
 
 module.exports = {
   devtool: 'eval-source-map',
@@ -44,6 +50,11 @@ module.exports = {
   plugins: union(
     plugins,
     [
+      new InterpolateHtmlPlugin(env.raw),
+      new HtmlWebpackPlugin({
+        inject: true,
+        template: paths.appHtml,
+      }),
       new webpack.HotModuleReplacementPlugin(),
       new WatchMissingNodeModulesPlugin(paths.appNodeModules),
       new WatchMissingNodeModulesPlugin(paths.ownNodeModules),
@@ -64,10 +75,10 @@ module.exports = {
   resolve: {
     modules: [
       'node_modules',
-      paths.appRoot,
-      path.resolve(process.cwd(), paths.appRoot)
+      paths.appSrc,
+      path.resolve(process.cwd(), paths.appSrc)
     ].concat(paths.nodePaths),
-
+    alias: { 'react-native': 'react-native-web' },
     extensions: ['.js', '.jsx', '.json']
   },
 
@@ -77,11 +88,13 @@ module.exports = {
       paths.appNodeModules,
     ],
   },
+
   node: {
     fs: 'empty',
     net: 'empty',
     tls: 'empty',
   },
+
   performance: {
     hints: false,
   },

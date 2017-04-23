@@ -6,11 +6,11 @@ const paths = require('../../config/paths');
 module.exports = (resolve, rootDir) => {
 
   const setupTestsFile = fs.existsSync(paths.testsSetup)
-    ? `<rootDir>/${paths.appRoot}/setupTests.js`
+    ? `<rootDir>/${paths.appSrc}/setupTests.js`
     : undefined;
 
   const config = {
-    collectCoverageFrom: [`${paths.appRoot}/**/*.{js,jsx}`],
+    collectCoverageFrom: [`${paths.appSrc}/**/*.{js,jsx}`],
     setupTestFrameworkScriptFile: setupTestsFile,
     testPathIgnorePatterns: [
       '<rootDir>[/](build|docs|node_modules|scripts)[/]',

@@ -20,14 +20,16 @@ const nodePaths = (process.env.NODE_PATH || '')
 .map(resolveApp);
 
 module.exports = {
-  appRoot  : APP_ROOT,
-  appRoot  : APP_SRC,
-  appPublic: resolveApp('public'),
-  appHtml  : resolveApp('public/index.html'),
-  appIndexJs: resolveApp(`${APP_SRC}/index.js`),
-  appBuild : resolveApp('build'),
-  nodePaths: nodePaths,
+  appRoot        : APP_ROOT,
+  appSrc         : resolveApp(APP_SRC),
+  appPublic      : resolveApp('public'),
+  appHtml        : resolveApp('public/index.html'),
+  appIndexJs     : resolveApp(`${APP_SRC}/index.js`),
+  appBuild       : resolveApp('build'),
+  appPackageJson : resolveApp('package.json'),
+  yarnLockFile   : resolveApp('yarn.lock'),
 
-  appNodeModules: resolveApp('node_modules'),
-  ownNodeModules: resolveOwn('node_modules'),
+  nodePaths      : nodePaths,
+  appNodeModules : resolveApp('node_modules'),
+  ownNodeModules : resolveOwn('node_modules'),
 };

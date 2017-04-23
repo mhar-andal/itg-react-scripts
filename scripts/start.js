@@ -27,7 +27,7 @@ const openBrowser = require('react-dev-utils/openBrowser');
 const prompt = require('react-dev-utils/prompt');
 const paths = require('../config/paths');
 const config = require('../config/webpack.development');
-// const devServerConfig = require('../config/webpackDevServer.config');
+const devServerConfig = require('../config/webpackDevServer.config');
 const createWebpackCompiler = require('./utils/createWebpackCompiler');
 const addWebpackMiddleware = require('./utils/addWebpackMiddleware');
 
@@ -93,6 +93,7 @@ function run(port) {
 // run on a different port. `detect()` Promise resolves to the next free port.
 detect(DEFAULT_PORT).then(port => {
   if (port === DEFAULT_PORT) {
+  console.log('DEFAULT_PORT', DEFAULT_PORT)
     run(port);
     return;
   }
