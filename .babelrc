@@ -9,7 +9,6 @@
         "debug": true,
         "loose": true,
         "useBuiltIns": true,
-        "modules": false,
       }
     ]
   ],
