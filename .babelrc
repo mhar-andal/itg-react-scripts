@@ -6,7 +6,6 @@
         "targets": {
           "node": "current"
         },
-        "debug": true,
         "loose": true,
         "useBuiltIns": true,
       }

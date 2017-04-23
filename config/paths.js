@@ -1,6 +1,6 @@
-import path from 'path';
-import fs   from 'fs';
-import url  from 'url';
+const path = require('path');
+const fs   = require('fs');
+const url  = require('url');
 
 const APP_ROOT = fs.realpathSync(process.cwd());
 const APP_SRC  = 'src';

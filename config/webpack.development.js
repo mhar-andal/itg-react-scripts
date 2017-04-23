@@ -1,12 +1,13 @@
-import webpack                       from 'webpack';
-import path                          from 'path';
-import WatchMissingNodeModulesPlugin from 'react-dev-utils/WatchMissingNodeModulesPlugin';
+const webpack                       = require('webpack');
+const union                         = require('lodash').union;
+const path                          = require('path');
+const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
 
-import paths                         from './paths';
-import plugins                       from './webpack/plugins';
+const paths                         = require('./paths');
+const plugins                       = require('./webpack/plugins');
 
-import rules                         from './webpack/rules';
-import babelLoaderRules              from './webpack/rules/babel-loader';
+const rules                         = require('./webpack/rules');
+const babelLoaderRules              = require('./webpack/rules/babel-loader');
 
 const BABEL_LOADER_PLUGINS_DEV = [
   require.resolve('babel-plugin-transform-react-jsx-self'),
@@ -28,7 +29,7 @@ module.exports = {
   },
 
   entry: [
-    'react-hot-loader/patch',
+    require.resolve('react-hot-loader/patch'),
     require.resolve('react-dev-utils/webpackHotDevClient'),
     paths.appIndexJs,
   ],
@@ -40,13 +41,15 @@ module.exports = {
     publicPath: publicPath,
   },
 
-  plugins: [
-    ...plugins,
-    new webpack.HotModuleReplacementPlugin(),
-    new WatchMissingNodeModulesPlugin(paths.appNodeModules),
-    new WatchMissingNodeModulesPlugin(paths.ownNodeModules),
-    new webpack.NamedModulesPlugin(),
-  ],
+  plugins: union(
+    plugins,
+    [
+      new webpack.HotModuleReplacementPlugin(),
+      new WatchMissingNodeModulesPlugin(paths.appNodeModules),
+      new WatchMissingNodeModulesPlugin(paths.ownNodeModules),
+      new webpack.NamedModulesPlugin(),
+    ]
+  ),
 
   module: {
     rules: [
@@ -73,5 +76,13 @@ module.exports = {
       paths.ownNodeModules,
       paths.appNodeModules,
     ],
+  },
+  node: {
+    fs: 'empty',
+    net: 'empty',
+    tls: 'empty',
+  },
+  performance: {
+    hints: false,
   },
 };

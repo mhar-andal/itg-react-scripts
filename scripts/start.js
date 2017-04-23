@@ -14,23 +14,22 @@ process.env.NODE_ENV = 'development';
 // if this file is missing. dotenv will never modify any environment variables
 // that have already been set.
 // https://github.com/motdotla/dotenv
-import Dotenv from 'dotenv';
-Dotenv.config({ silent: true });
+require('dotenv').config({ silent: true });
 
-import fs from 'fs';
-import chalk from 'chalk';
-import detect from 'detect-port';
-import WebpackDevServer from 'webpack-dev-server';
-import clearConsole from 'react-dev-utils/clearConsole';
-import checkRequiredFiles from 'react-dev-utils/checkRequiredFiles';
-import getProcessForPort from 'react-dev-utils/getProcessForPort';
-import openBrowser from 'react-dev-utils/openBrowser';
-import prompt from 'react-dev-utils/prompt';
-import paths from '../config/paths';
-import config from '../config/webpack.development';
+const fs = require('fs');
+const chalk = require('chalk');
+const detect = require('detect-port');
+const WebpackDevServer = require('webpack-dev-server');
+const clearConsole = require('react-dev-utils/clearConsole');
+const checkRequiredFiles = require('react-dev-utils/checkRequiredFiles');
+const getProcessForPort = require('react-dev-utils/getProcessForPort');
+const openBrowser = require('react-dev-utils/openBrowser');
+const prompt = require('react-dev-utils/prompt');
+const paths = require('../config/paths');
+const config = require('../config/webpack.development');
 // const devServerConfig = require('../config/webpackDevServer.config');
-import createWebpackCompiler from './utils/createWebpackCompiler';
-import addWebpackMiddleware from './utils/addWebpackMiddleware';
+const createWebpackCompiler = require('./utils/createWebpackCompiler');
+const addWebpackMiddleware = require('./utils/addWebpackMiddleware');
 
 const useYarn = fs.existsSync(paths.yarnLockFile);
 const cli = useYarn ? 'yarn' : 'npm';

@@ -1,12 +1,13 @@
-import webpack from 'webpack';
+const webpack = require('webpack');
 
-import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin';
+const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 
 module.exports = [
   new CaseSensitivePathsPlugin(),
   // new webpack.DefinePlugin({
   //   CONFIG: JSON.stringify(environmentConfig)
   // }),
+  new webpack.HotModuleReplacementPlugin(),
   new webpack.optimize.OccurrenceOrderPlugin(),
   new webpack.NoEmitOnErrorsPlugin(),
 ];

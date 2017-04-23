@@ -19,7 +19,7 @@ switch (script) {
   case 'test':
     var result = spawn.sync(
       'node',
-      [require.resolve('../lib/scripts/' + script)].concat(args),
+      [require.resolve('../scripts/' + script)].concat(args),
       { stdio: 'inherit' }
     );
     if (result.signal) {
