@@ -1,9 +1,50 @@
 {
   "name": "itg-react-scripts",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "The build tools behind my react apps",
-  "main": "index.js",
-  "repository": "https://github.com/itsthatguy/itg-react-scripts",
+  "repository": "itsthatguy/itg-react-scripts",
   "author": "Kevin Altman <kevin@itsthatguy.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "engines": {
+    "node": ">=6"
+  },
+  "files": [
+    "bin",
+    "config",
+    "scripts"
+  ],
+  "bin": {
+    "itg-react-scripts": "./bin/itg-react-scripts.js"
+  },
+  "dependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "7.0.0-alpha.3",
+    "babel-plugin-dynamic-import-node": "^1.0.1",
+    "babel-plugin-syntax-object-rest-spread": "^6.13.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-es2015-destructuring": "^6.23.0",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-plugin-transform-react-jsx-self": "^6.22.0",
+    "babel-plugin-transform-react-jsx-source": "^6.22.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.4.0",
+    "babel-preset-latest": "^6.24.1",
+    "babel-preset-node6": "^11.0.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-runtime": "^6.23.0",
+    "case-sensitive-paths-webpack-plugin": "^2.0.0",
+    "cross-spawn": "^5.1.0",
+    "detect-port": "^1.1.1",
+    "dotenv": "^4.0.0",
+    "html-webpack-plugin": "^2.28.0",
+    "lodash": "^4.17.4",
+    "react-dev-utils": "^0.5.2",
+    "react-hot-loader": "^3.0.0-beta.6",
+    "webpack": "^2.4.1",
+    "webpack-dev-server": "^2.4.3"
+  },
+  "devDependencies": {
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4"
+  }
 }

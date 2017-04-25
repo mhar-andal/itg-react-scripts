@@ -1,0 +1,30 @@
+{
+  "presets": [
+    [
+      "babel-preset-env",
+      {
+        "targets": {
+          "node": "current"
+        },
+        "loose": true,
+        "useBuiltIns": true,
+      }
+    ]
+  ],
+
+  "plugins": [
+    "babel-plugin-dynamic-import-node",
+    "babel-plugin-transform-class-properties",
+    [ "babel-plugin-transform-object-rest-spread", { "useBuiltIns": true } ],
+    [ "babel-plugin-transform-runtime",
+      {
+        "helpers": false,
+        "polyfill": false,
+        "regenerator": true,
+        "moduleName": "babel-runtime"
+      }
+    ],
+    "babel-plugin-transform-react-jsx-self",
+    "babel-plugin-transform-react-jsx-source",
+  ]
+}
