@@ -24,6 +24,8 @@ const publicPath = paths.publicPath;
 const publicUrl = '';
 const env = getClientEnvironment(publicUrl);
 
+const PORT = parseInt(process.env.PORT, 10) || 3000;
+
 module.exports = {
   devtool: 'eval-source-map',
 
@@ -36,7 +38,8 @@ module.exports = {
 
   entry: [
     require.resolve('react-hot-loader/patch'),
-    require.resolve('react-dev-utils/webpackHotDevClient'),
+    `${require.resolve('webpack-dev-server/client')}?http://localhost:${PORT}`,
+    require.resolve('webpack/hot/dev-server'),
     paths.appIndexJs,
   ],
 
